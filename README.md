@@ -23,7 +23,7 @@ that has been user tested for the specific use cases that are covered:
   git clone https://github.com/firebase/mlkit-material-android
   ```
 * [Create a Firebase project in the Firebase console, if you don't already have one](https://firebase.google.com/docs/android/setup)
-* Add a new Android app into your Firebase project with package name com.google.firebase.ml.md
+* Add a new Android app into your Firebase project with package name org.fuzz.qrscanner
 * Download the config file (google-services.json) from the new added app and move it into the module folder (i.e. [app/](./app/))
 * Build and run it on an Android device
 
