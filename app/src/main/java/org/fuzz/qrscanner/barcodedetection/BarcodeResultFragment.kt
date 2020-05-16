@@ -17,16 +17,22 @@
 package org.fuzz.qrscanner.barcodedetection
 
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
+import org.checkerframework.checker.units.qual.Length
 import org.fuzz.qrscanner.R
 import org.fuzz.qrscanner.camera.WorkflowModel
 import org.fuzz.qrscanner.camera.WorkflowModel.WorkflowState
@@ -53,7 +59,7 @@ class BarcodeResultFragment : BottomSheetDialogFragment() {
         view.findViewById<RecyclerView>(R.id.barcode_field_recycler_view).apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
-            adapter = BarcodeFieldAdapter(barcodeFieldList)
+            adapter = BarcodeFieldAdapter(barcodeFieldList) { urlClicked(it) }
         }
 
         return view
@@ -66,6 +72,16 @@ class BarcodeResultFragment : BottomSheetDialogFragment() {
                     .setWorkflowState(WorkflowState.DETECTING)
         }
         super.onDismiss(dialogInterface)
+    }
+
+    private fun urlClicked(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        if (!URLUtil.isValidUrl(url)) {
+            Toast.makeText(requireActivity(), "Not a valid URL", Toast.LENGTH_SHORT).show()
+        } else {
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
     }
 
     companion object {
@@ -85,4 +101,5 @@ class BarcodeResultFragment : BottomSheetDialogFragment() {
             (fragmentManager.findFragmentByTag(TAG) as BarcodeResultFragment?)?.dismiss()
         }
     }
+
 }
