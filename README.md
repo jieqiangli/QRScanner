@@ -1,17 +1,4 @@
-[![Build Status](https://travis-ci.org/firebase/mlkit-material-android.svg?branch=master)](https://travis-ci.org/firebase/mlkit-material-android)
-
-# ML Kit Showcase App with Material Design
-
-This app demonstrates how to build an end-to-end user experience with 
-[Google ML Kit APIs](https://developers.google.com/ml-kit) and following the 
-[new Material for ML design guidelines](https://material.io/collections/machine-learning/).
-
-The goal is to make it as easy as possible to integrate ML Kit into your app with an experience 
-that has been user tested for the specific use cases that are covered:
-
-* Visual search using the Object Detection & Tracking API - a complete workflow from object
-  detection to product search in live camera and static image
-* Barcode detection using the Barcode API in live camera
+# Modified ML Kit Showcase App to only do QR Scanning
 
 <img src="screenshots/live_odt.gif" width="256"/> <img src="screenshots/static_odt.gif" width="256"/>
 <img src="screenshots/live_barcode.gif" width="256"/>
