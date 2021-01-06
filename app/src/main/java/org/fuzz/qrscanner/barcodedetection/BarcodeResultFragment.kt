@@ -76,12 +76,8 @@ class BarcodeResultFragment : BottomSheetDialogFragment() {
 
     private fun urlClicked(url: String) {
         val intent = Intent(Intent.ACTION_VIEW)
-        if (!URLUtil.isValidUrl(url)) {
-            Toast.makeText(requireActivity(), "Not a valid URL", Toast.LENGTH_SHORT).show()
-        } else {
-            intent.data = Uri.parse(url)
-            startActivity(intent)
-        }
+        intent.data = Uri.parse(url)
+        startActivity(intent)
     }
 
     companion object {

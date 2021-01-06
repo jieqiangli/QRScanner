@@ -15,7 +15,6 @@
       android:layout_marginTop="@dimen/barcode_field_padding_vertical"
       android:padding="@dimen/barcode_field_value_padding"
       android:background="@drawable/barcode_field_box"
-      android:textColor="@color/barcode_field_value"
       android:textSize="@dimen/barcode_field_value_size"/>
 
   <TextView

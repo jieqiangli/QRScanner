@@ -205,7 +205,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
         workflowModel?.detectedBarcode?.observe(this, Observer { barcode ->
             if (barcode != null) {
                 val barcodeFieldList = ArrayList<BarcodeField>()
-                barcodeFieldList.add(BarcodeField("Scanned Value", barcode.rawValue ?: ""))
+                barcodeFieldList.add(BarcodeField("Barcode URL", barcode.rawValue ?: ""))
                 BarcodeResultFragment.show(supportFragmentManager, barcodeFieldList)
             }
         })

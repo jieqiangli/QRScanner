@@ -16,6 +16,8 @@
 
 package org.fuzz.qrscanner.barcodedetection
 
+import android.text.SpannableString
+import android.text.style.URLSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +27,7 @@ import org.fuzz.qrscanner.R
 import org.fuzz.qrscanner.barcodedetection.BarcodeFieldAdapter.BarcodeFieldViewHolder
 
 /** Presents a list of field info in the detected barcode.  */
-internal class BarcodeFieldAdapter(private val barcodeFieldList: List<BarcodeField>, private val clickListener: (url: String) -> Any ) :
+internal class BarcodeFieldAdapter(private val barcodeFieldList: List<BarcodeField>, private val clickListener: (url: String) -> Any) :
     RecyclerView.Adapter<BarcodeFieldViewHolder>() {
 
     internal class BarcodeFieldViewHolder private constructor(view: View) : RecyclerView.ViewHolder(view) {
@@ -35,7 +37,10 @@ internal class BarcodeFieldAdapter(private val barcodeFieldList: List<BarcodeFie
 
         fun bindBarcodeField(barcodeField: BarcodeField) {
             labelView.text = barcodeField.label
-            valueView.text = barcodeField.value
+            val urlSpan = URLSpan(barcodeField.value)
+            val s = SpannableString(barcodeField.value)
+            s.setSpan(urlSpan, 0, s.length, 0)
+            valueView.text = s
         }
 
         companion object {
